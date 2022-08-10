@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+ body{
+    
+
+    /* background: linear-gradient(to right, #2b5876, #4e4376); */
+     background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%); 
+
+
+}
+/*
+table th,td,tr{
+    color: skyblue;
+}
+ */
+
+*{font-family: 'Raleway', sans-serif;}

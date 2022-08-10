@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CarDetail } from 'src/app/modules/carDetail';
 import { ListResponseModel } from 'src/app/modules/listResponseModel';
 import { CarDetailService } from 'src/app/services/car-detail.service';
@@ -11,6 +12,7 @@ import { CarDetailService } from 'src/app/services/car-detail.service';
 export class CarDetailComponent implements OnInit {
 
   carDetails: CarDetail[] = [];
+  filterText="";
   carDetailReponseModel: ListResponseModel<CarDetail> = {
     data: this.carDetails,
     message: "",
@@ -22,11 +24,11 @@ export class CarDetailComponent implements OnInit {
   constructor(private carDetailService:CarDetailService) { }
 
   ngOnInit(): void {
-    this.getCarDetail();
+    this.getCarDetails();
   }
 
-  getCarDetail(){
-    this.carDetailService.getCars().subscribe(response=>{
+  getCarDetails(){
+    this.carDetailService.getCarDetails().subscribe(response=>{
       this.carDetails = response.data;
       this.dataLoaded = true;
     })

@@ -1,4 +1,4 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status">
+<!-- <div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status">
     <span class="visually-hidden">Loading...</span>
 </div>
 
@@ -14,4 +14,30 @@
 
         <td>{{color.colorName}}</td>
     </tr>
-</table>
+</table> -->
+
+<ul class="list-group">
+    <li routerLink="/cars" [class]="getAllColorClass()">
+      Tüm Renkler
+    </li>
+  
+    <li (click)="setCurrentColor(color)" routerLink="cars/color/{{color.colorId}}" *ngFor="let color of colors"
+      [class]="getCurrentColorClass(color)">
+  
+      {{color.colorName}}
+  
+    </li>
+  </ul>
+  
+  <!-- <h5 *ngIf="currentColor">{{currentColor.colorName}}</h5> -->
+  <br>
+  <select class="form-select" id="color_dropdown">
+  
+    <option>
+      Tüm Markalar
+    </option>
+  
+    <option *ngFor="let color of colors" (click)="setCurrentColor(color)" routerLink="cars/color/{{color.colorId}}"
+      [class]="getCurrentColorClass(color)" value="1">{{color.colorName}}</option>
+  
+  </select>

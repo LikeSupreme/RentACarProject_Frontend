@@ -9,11 +9,26 @@ import { ListResponseModel } from '../modules/listResponseModel';
 })
 export class CarDetailService {
 
-  apiUrl = "https://localhost:44347/api/cars/getcardetails";//web api controller kısmına getcardetails operasyonu eklenecek.
+  apiUrl = "https://localhost:44347/api/";//web api controller kısmına getcardetails operasyonu eklenecek.
 
   constructor(private httpClient:HttpClient) { }
 
-  getCars(): Observable<ListResponseModel<CarDetail>>{
-    return this.httpClient.get<ListResponseModel<CarDetail>>(this.apiUrl);
+  getCarDetails(): Observable<ListResponseModel<CarDetail>>{
+    let newPath = this.apiUrl + "cars/getcardetails";
+    return this.httpClient.get<ListResponseModel<CarDetail>>(newPath);
   }
+
+  // getCarsByBrandId(brandId:number): Observable<ListResponseModel<CarDetail>> {//new
+    
+  //   let newPath = this.apiUrl + "cars/getcarsbybrandid?brandId=" + brandId;//new
+
+  //   return this.httpClient.get<ListResponseModel<CarDetail>>(newPath);
+
+  // }
+
+  // getCarsByColorId(colorId:number): Observable<ListResponseModel<CarDetail>> {//new
+    
+  //   let newPath = this.apiUrl + "cars/getcarsbycolorid?colorId=" + colorId;//new
+
+  //   return this.httpClient.get<ListResponseModel<CarDetail>>(newPath);
 }

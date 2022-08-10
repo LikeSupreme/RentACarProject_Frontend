@@ -11,6 +11,8 @@ import { ColorService } from 'src/app/services/color.service';
 export class ColorComponent implements OnInit {
 
   colors: Color[] = [];
+  filterText = "";
+  currentColor:Color;
   colorResponseModel: ListResponseModel<Color> = {
     data: this.colors,
     message: "",
@@ -26,9 +28,39 @@ export class ColorComponent implements OnInit {
   }
 
   getColors(){
-    this.colorService.getCars().subscribe(response=>{
+    this.colorService.getColors().subscribe(response=>{
       this.colors = response.data;
       this.dataLoaded = true;
     })
   }
+
+
+  setCurrentColor(color: Color) {//new
+    this.currentColor = color;
+  }
+
+  getCurrentColorClass(color: Color) {
+    if (color == this.currentColor) {
+      return "list-group-item active";
+    }
+    else {
+      return "list-group-item";
+    }
+  }
+
+  getAllColorClass(){
+    if (!this.currentColor) {
+      return "list-group-item active";
+    }
+    else {
+      return "list-group-item";
+    }
+  }
+
+
+
+
+
+
+
 }

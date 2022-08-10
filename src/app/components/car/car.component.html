@@ -1,28 +1,61 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status">
-    <span class="visually-hidden">Loading...</span>
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="mb-3">
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Araba ifadesi giriniz">
 </div>
 
-<table *ngIf="dataLoaded==true" class="table">
+<div *ngIf="filterText" class="alert alert-success">
+  {{filterText}} aradınız 
+</div>
 
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Araba Adı</th>
-            <th>Marka Id</th>
-            <th>Renk Id</th>
-            <th>Model Yılı</th>
-            <th>Günlük Fiyat</th>
-            <th>Açıklama</th>
-        </tr>
-    </thead>
 
-    <tr *ngFor="let car of cars">
-        <td>{{car.carId}}</td>
-        <td>{{car.carName}}</td>
-        <td>{{car.brandId}}</td>
-        <td>{{car.colorId}}</td>
-        <td>{{car.modelYear}}</td>
-        <td>{{car.dailyPrice}}</td>
-        <td>{{car.description}}</td>
-    </tr>
-</table>
+
+
+<div class="site-section bg-light">
+  <div class="container">
+
+    <br>
+
+    <div   class="row" >
+      <div  *ngFor="let car of cars | filterPipe:filterText "   class="col-md-6 col-lg-4 mb-4">
+
+        <div class="listing d-block  align-items-stretch">
+          <div class="listing-img h-100 mr-4">
+            <img src="assets/images/car_6.jpg" alt="Image" class="img-fluid">
+          </div>
+          <div class="listing-contents h-100">
+            <h3>{{car.carName |uppercase}}</h3>
+            <div class="rent-price">
+              <strong>{{car.dailyPrice | currency }}</strong><span class="mx-1">/</span>day
+            </div>
+            <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+              <div class="listing-feature pr-4">
+                <span class="caption">Luggage:</span>
+                <span class="number">8</span>
+              </div>
+              <div class="listing-feature pr-4">
+                <span class="caption">Doors:</span>
+                <span class="number">4</span>
+              </div>
+              <div class="listing-feature pr-4">
+                <span class="caption">Passenger:</span>
+                <span class="number">4</span>
+              </div>
+            </div>
+            <div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
+              <p> <a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    </div>
+    </div>
